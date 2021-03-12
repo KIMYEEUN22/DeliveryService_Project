@@ -23,7 +23,7 @@ export default class ClientList extends Component {
 		}, 2000);
 	};
 	FetchData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/User`);
 		this.setState({ userdata : data });
 		this.getData();
@@ -32,9 +32,9 @@ export default class ClientList extends Component {
 		const { building } = this.props.route.params;
 		const { userdata } = this.state;
 		const clientList = [];
-		var index = 0;
+		let index = 0;
 
-		for (var i = 0; i < userdata.length ; i++) {
+		for (let i = 0; i < userdata.length ; i++) {
 			if (userdata[i].건물명 === building) {
 				clientList[index] = userdata[i];
 				index++;

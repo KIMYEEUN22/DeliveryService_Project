@@ -3,7 +3,7 @@ import { alert, Alert } from 'react-native';
 import ipCode from '../../ipcode';
 
 export default async function(UserID, Building, Cond) {
-	var ip = ipCode();
+	let ip = ipCode();
 	if (UserID == 0) {
 		//전체 배송완료,취소
 		await fetch(`http:/${ip}:3000/User`, {

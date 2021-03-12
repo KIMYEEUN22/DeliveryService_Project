@@ -17,14 +17,14 @@ export default class MapCont extends Component {
 		}, 1000);
 	};
 	getData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3001/`);
 
 		this.setState({ lat: data[0].lat, lon: data[1].lon });
-		var hour = new Date().getHours();
-		var min = new Date().getMinutes();
-		var sec = new Date().getSeconds();
-		var mil = new Date().getMilliseconds();
+		let hour = new Date().getHours();
+		let min = new Date().getMinutes();
+		let sec = new Date().getSeconds();
+		let mil = new Date().getMilliseconds();
 
 		console.log('끝', hour + '시' + min + '분' + sec + '.' + mil + '초');
 	};
@@ -54,10 +54,10 @@ export default class MapCont extends Component {
 		this.getData();
 	}
 	render() {
-		var hour = new Date().getHours();
-		var min = new Date().getMinutes();
-		var sec = new Date().getSeconds();
-		var mil = new Date().getMilliseconds();
+		let hour = new Date().getHours();
+		let min = new Date().getMinutes();
+		let sec = new Date().getSeconds();
+		let mil = new Date().getMilliseconds();
 		console.log('시작', hour + '시' + min + '분' + sec + '.' + mil + '초');
 		const { lat, lon } = this.state;
 		return this.setHeaderOptions(this.props.navigation), <Map lat={lat} lon={lon} refresh={this.onRefresh} />;

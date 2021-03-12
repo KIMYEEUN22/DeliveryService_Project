@@ -30,14 +30,14 @@ class AdminCode extends React.Component {
 		console.log(this.state.code);
     };
     getData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/Admin`);
 		this.setState({ num: data });
 		console.log(this.state.num);
     };
     login = (inputnum) => {
-		var check = 0;
-		for (var i = 0; i < this.state.num.length; i++) {
+		let check = 0;
+		for (let i = 0; i < this.state.num.length; i++) {
 			if (inputnum == this.state.num[i].관리자번호) {
                 this.props.navigation.navigate('Situation', { adminKey: this.state.num[i].건물명 });
 				check = 1;

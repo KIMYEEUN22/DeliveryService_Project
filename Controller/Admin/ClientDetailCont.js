@@ -24,9 +24,9 @@ export default class ClientDetail extends React.Component{
 		});
     }
     getData = async (orderKey) => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/User`);
-		for (var i = 0; i < data.length; i++) {
+		for (let i = 0; i < data.length; i++) {
 			if (data[i].주문자번호 == orderKey) this.setState({ clientData: data[i] });
 		}
 	};

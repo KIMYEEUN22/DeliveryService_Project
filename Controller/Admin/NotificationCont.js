@@ -1,6 +1,6 @@
 export default async function Notification(UserID, Token, Name, Cond) {
 	if (UserID == 0) {
-		for (var i = 0; i < Token.length; i++) {
+		for (let i = 0; i < Token.length; i++) {
 			const message = {
 				to                   : Token[i].알림코드,
 				sound                : 'default',
