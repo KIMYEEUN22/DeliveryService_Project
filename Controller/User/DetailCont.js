@@ -14,19 +14,19 @@ export default class Detail extends Component {
 		};
     }
 	getData = async (building) => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/Delivery`);
-		for (var i = 0; i < data.length; i++) {
+		for (let i = 0; i < data.length; i++) {
 			if (data[i].건물명 == building) this.setState({ time: data[i].배송시간 });
 		}
 		this.checkTime();
 	};
 	checkTime() {
-		var { time } = this.state;
-		var hours = new Date().getHours();
-		var min = new Date().getMinutes();
-		var hoursU = parseInt(time[0]) * 10 + parseInt(time[1]);
-		var minU = parseInt(time[3]) * 10 + parseInt(time[4]);
+		let { time } = this.state;
+		let hours = new Date().getHours();
+		let min = new Date().getMinutes();
+		let hoursU = parseInt(time[0]) * 10 + parseInt(time[1]);
+		let minU = parseInt(time[3]) * 10 + parseInt(time[4]);
         console.log(hours, hoursU,min,minU);
 		if (minU == 0) {
 			if (hours >= hoursU) {
@@ -62,8 +62,8 @@ export default class Detail extends Component {
 		});
 	}
 	handleDelete(UserID, doc, building, navigation) {
-		var check = 0;
-		var ip = ipCode();
+		let check = 0;
+		let ip = ipCode();
 
 		Alert.alert('예약취소', '진행하시겠습니끼?', [
 			{ text: 'Cancel' },

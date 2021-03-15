@@ -14,14 +14,14 @@ export default class Update extends Component {
 		};
 	}
 	getData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/Delivery`);
 		this.setState({ delivery : data });
 	};
 	checkPaper(building, prevPaper, updatePaper) {
-		var checking;
+		let checking;
 		const data = this.state.delivery;
-		for (var i = 0; i < data.length; i++) {
+		for (let i = 0; i < data.length; i++) {
 			if (data[i].건물명 == building) {
 				checking = parseInt(updatePaper) + parseInt(data[i].서류현황) - parseInt(prevPaper);
 			}
@@ -40,11 +40,11 @@ export default class Update extends Component {
 		if (desti_1 == null) desti_1 = list.배송지;
 		if (doc == null) doc = list.서류수량;
 
-		var UserID = list.주문자번호;
-		var building = list.건물명;
-		var prevPaper = list.서류수량;
-		var ip = ipCode();
-		var checking = this.checkPaper(building, prevPaper, doc);
+		let UserID = list.주문자번호;
+		let building = list.건물명;
+		let prevPaper = list.서류수량;
+		let ip = ipCode();
+		let checking = this.checkPaper(building, prevPaper, doc);
 		console.log(doc);
 		if (checking != 0) {
 			fetch(`http://${ip}:3000/update`, {

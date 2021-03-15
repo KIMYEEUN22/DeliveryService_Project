@@ -15,7 +15,7 @@ class Book extends Component {
 		};
 	}
 	getData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/Delivery`);
 		this.getPaperInform(data);
 		this.setState({ delivery : data });
@@ -23,7 +23,7 @@ class Book extends Component {
 	getPaperInform(data) {
 		const { building } = this.props.route.params;
 		let paper;
-		for (var i = 0; i < data.length; i++){
+		for (let i = 0; i < data.length; i++){
 			if (data[i].건물명 == building)
 				paper = data[i].서류현황
 		}
@@ -32,9 +32,9 @@ class Book extends Component {
 	}
 	checkPaper(building, doc) {
 		console.log('checking', building, doc);
-		var check;
+		let check;
 		const totalPaper = this.state.delivery;
-		for (var i = 0; i < totalPaper.length; i++) {
+		for (let i = 0; i < totalPaper.length; i++) {
 			if (totalPaper[i].건물명 == building) {
 				check = parseInt(doc) + parseInt(totalPaper[i].서류현황);
 				console.log('checking value', check);
@@ -52,11 +52,11 @@ class Book extends Component {
 	}
 	saveButton = async (name, phone, desti_1, doc) => {
 		console.log('saving..');
-		var ip = ipCode();
+		let ip = ipCode();
 		const { building } = this.props.route.params;
 		let token = await Notifications.getExpoPushTokenAsync();
-		var checkInfo = this.checkInfo(name, phone, desti_1, doc);
-		var check = this.checkPaper(building, doc);
+		let checkInfo = this.checkInfo(name, phone, desti_1, doc);
+		let check = this.checkPaper(building, doc);
 		if (checkInfo) {
 			if (check == 1) {
 				fetch(`http://${ip}:3000/booking`, {

@@ -30,13 +30,13 @@ export default class Identity extends React.Component {
 		console.log(this.state.access);
     };
     getData = async () => {
-		var ip = ipCode();
+		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/User`);
 		this.setState({ phoneNum : data });
     };
     login = (inputnum) => {
-		var check = 0;
-		for (var i = 0; i < this.state.phoneNum.length; i++) {
+		let check = 0;
+		for (let i = 0; i < this.state.phoneNum.length; i++) {
             if (inputnum == this.state.phoneNum[i].전화번호) {
                 this.props.navigation.navigate('OrderList', { IdentityKey : this.state.phoneNum[i].전화번호 });
 				check = 1;

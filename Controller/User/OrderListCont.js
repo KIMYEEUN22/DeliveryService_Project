@@ -33,7 +33,7 @@ export default class OrderList extends React.Component{
       });
     }
     getData = async() => {
-        var ip = ipcode();
+        let ip = ipcode();
         const { data } = await axios.get(`http://${ip}:3000/User`);
         this.setState({ userData : data });
       };

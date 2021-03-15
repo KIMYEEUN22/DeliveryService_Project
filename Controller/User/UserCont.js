@@ -32,7 +32,7 @@ class User extends React.Component{
       });
     }
     getData = async() => {
-        var ip = ipcode();
+        let ip = ipcode();
         const { data } = await axios.get(`http://${ip}:3000/Delivery`);
         this.setState({ delivery : data });
       };
