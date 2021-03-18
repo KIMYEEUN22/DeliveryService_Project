@@ -4,7 +4,7 @@ import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-nativ
 import { Ionicons } from '@expo/vector-icons';
 import ipCode from '../../ipcode';
 
-class AdminCode extends React.Component {
+export default class AdminCode extends React.Component {
     constructor(props) {
 		super(props);
 		this.state = {
@@ -27,17 +27,15 @@ class AdminCode extends React.Component {
     }
     handlePassword = (text) => {
 		this.setState({ code: text });
-		console.log(this.state.code);
     };
     getData = async () => {
 		let ip = ipCode();
 		const { data } = await axios.get(`http://${ip}:3000/Admin`);
 		this.setState({ num: data });
-		console.log(this.state.num);
     };
     login = (inputnum) => {
 		let check = 0;
-		for (let i = 0; i < this.state.num.length; i++) {
+		for (let i of this.state.num.length) {
 			if (inputnum == this.state.num[i].관리자번호) {
                 this.props.navigation.navigate('Situation', { adminKey: this.state.num[i].건물명 });
 				check = 1;
@@ -77,7 +75,6 @@ class AdminCode extends React.Component {
         );
     }
 }
-export default AdminCode;
 
 const styles = StyleSheet.create({
 	container : {
