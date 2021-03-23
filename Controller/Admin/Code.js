@@ -35,7 +35,7 @@ export default class AdminCode extends React.Component {
     };
     login = (inputnum) => {
 		let check = 0;
-		for (let i of this.state.num.length) {
+		for (let i=0; i < this.state.num.length; i++) {
 			if (inputnum == this.state.num[i].관리자번호) {
                 this.props.navigation.navigate('Situation', { adminKey: this.state.num[i].건물명 });
 				check = 1;

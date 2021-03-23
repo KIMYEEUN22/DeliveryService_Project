@@ -124,9 +124,13 @@ class Book extends Component {
 	  }
 	componentDidMount() {
 		this.getData();
+		if (props) {
+			props.reloadApp();
+		  }
 	}
 	render() {
 		const {building, paper } = this.state;
+		
 		return (
 			this.setHeaderOptions(this.props.navigation),
 			<BookingView saveButton={this.saveButton} building={building} paper ={paper} />

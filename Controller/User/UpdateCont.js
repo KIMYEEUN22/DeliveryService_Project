@@ -115,19 +115,7 @@ export default class Update extends Component {
 	  }
 	componentDidMount() {
 		this.getData();
-		this._unsubscribe = this.props.navigation.addListener('focus', () => {
-			this.onRefresh();
-		});
     }
-    onRefresh = () => {
-		this.setState({ refreshing: true });
-		this.getData().then(() => {
-			this.setState({ refreshing: false });
-		});
-    }; 
-	componentWillUnmount() {
-		this._unsubscribe();
-	}
 	render() {
 		const { list } = this.props.route.params;
 		return (

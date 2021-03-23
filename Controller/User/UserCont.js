@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
 import { AntDesign, Feather } from '@expo/vector-icons';
 import ipcode from '../../ipcode';
@@ -11,6 +11,7 @@ class User extends React.Component{
 			delivery  : ''
 		};
     }
+    
     setHeaderOptions(navigation) {
       navigation.setOptions({
         headerLeft  : () => (
@@ -35,22 +36,12 @@ class User extends React.Component{
         let ip = ipcode();
         const { data } = await axios.get(`http://${ip}:3000/Delivery`);
         this.setState({ delivery : data });
+        
       };
     componentDidMount() {
-		this.getData();
-		this._unsubscribe = this.props.navigation.addListener('focus', () => {
-			this.onRefresh();
-		});
+	  	this.getData();
     }
-    onRefresh = () => {
-		this.setState({ refreshing: true });
-		this.getData().then(() => {
-			this.setState({ refreshing: false });
-		});
-    }; 
-	componentWillUnmount() {
-		this._unsubscribe();
-	}
+
     render() {
         return(
           this.setHeaderOptions(this.props.navigation),
